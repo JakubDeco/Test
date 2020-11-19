@@ -78,24 +78,25 @@ public class Main {
     }
 
     public static void mostFrequentElement(ArrayList<Integer> arrList) {
-        int number=0;
         int numbFreq=0;
+        HashSet<Integer> finalNumbers=new HashSet<>();
 
         for (Integer help : arrList) {
             int helpFreq=Collections.frequency(arrList,help);
-
                 if (helpFreq > numbFreq) {
-
-                    number = help;
+                    finalNumbers.clear();
                     numbFreq = helpFreq;
-
+                    finalNumbers.add(help);
                 }
-                //what if there are more than one elements with same frequency?
-                /*if (help == numbFreq) {
-                }*/
-
+                //if there are more than one elements of the same frequency
+                if (helpFreq == numbFreq) {
+                    finalNumbers.add(help);
+                }
         }
-
-        System.out.println("Number "+number+" is "+numbFreq+" times in this ArrayList.");
+        if (numbFreq>1){
+            System.out.println("Number/s " + finalNumbers
+                    + " is/are the most frequent(" + numbFreq + "times) in this collection.");
+        }
+        else System.out.println("Collection doesn't contain duplicate numbers.");
     }
 }
