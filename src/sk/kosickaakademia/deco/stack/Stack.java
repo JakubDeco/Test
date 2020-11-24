@@ -28,10 +28,10 @@ public class Stack<T> {
         return arrList.size()==capacity;
     }
 
-    public T push(T object){
+    public T push(T object) throws StackException{
         if (isFull()){
-            System.out.println("Stack is full.");
-            return null;
+            throw new StackException("Stack is full");
+            //return null;
         }
         else {
             arrList.add(object);
@@ -39,10 +39,10 @@ public class Stack<T> {
         }
     }
 
-    public T pop(){
+    public T pop() throws StackException{
         if (isEmpty()){
-            System.out.println("Stack is empty.");
-            return null;
+            throw new StackException("Stack is empty");
+            //return null;
         }
         else {
             T help=arrList.get(arrList.size()-1);
@@ -51,10 +51,10 @@ public class Stack<T> {
         }
     }
 
-    public T peek(){
+    public T peek() throws StackException{
         if(isEmpty()){
-            System.out.println("Stack is empty");
-            return null;
+            throw new StackException("Stack is empty");
+            //return null;
         }
         else
             return arrList.get(arrList.size()-1);
